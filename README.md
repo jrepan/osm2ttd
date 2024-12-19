@@ -7,8 +7,13 @@ NOTE: this is not finished and doesn't work properly yet
 Download a osm.pbf file from https://download.geofabrik.de/ and run a command like
 
 ```
-go run osm2ttd.go [--size=SIZE_IN_DEGREES] INFILE OUTFILE LONGITUDE LATITUDE
+go run osm2ttd.go [flags] INFILE OUTFILE LONGITUDE LATITUDE
 ```
+
+Available flags:
+- size: Size of the map in degrees
+- roads: OpenStreetMaps tags to count as roads
+- towns: OpenStreetMaps tags to count as towns
 
 Example:
 

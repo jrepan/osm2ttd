@@ -8,17 +8,20 @@ import (
 	"osm2ttd/ttd"
 	"slices"
 	"strconv"
+	"strings"
 
 	"github.com/paulmach/osm"
 	"github.com/paulmach/osm/osmpbf"
 )
 
 var (
-	minLat float64
-	maxLat float64
-	minLon float64
-	maxLon float64
-	size   = flag.Float64("size", 0.1, "Size of the map in degrees")
+	minLat   float64
+	maxLat   float64
+	minLon   float64
+	maxLon   float64
+	size     = flag.Float64("size", 0.1, "Size of the map in degrees")
+	townTags = flag.String("towns", "village,city", "OpenStreetMaps tags to count as towns")
+	roadTags = flag.String("roads", "roads,motorway,trunk,primary,secondary,tertiary,unclassified,residential", "OpenStreetMaps tags to count as roads")
 )
 
 func coordToXY(c float64, lat bool) int {
@@ -132,7 +135,7 @@ func main() {
 						s.Tiles[coordToTile(n.Lat, n.Lon)].Class = 3
 						s.Tiles[coordToTile(n.Lat, n.Lon)].Type = 0x18
 					}
-					if t.Key == "place" && slices.Contains([]string{"city", "village"}, t.Value) {
+					if t.Key == "place" && slices.Contains(strings.Split(*townTags, ","), t.Value) {
 						isTown = true
 					}
 					if t.Key == "name" {
@@ -158,7 +161,7 @@ func main() {
 							}
 						}
 					}
-					if t.Key == "highway" && slices.Contains([]string{"motorway", "trunk", "primary", "secondary", "tertiary", "unclassified", "residential"}, t.Value) {
+					if t.Key == "highway" && slices.Contains(strings.Split(*roadTags, ","), t.Value) {
 						prevValid := false
 						var prevX, prevY int
 						for _, wn := range w.Nodes {
