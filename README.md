@@ -18,7 +18,7 @@ go run osm2ttd.go --size=0.1 in.osm.pbf out.sv0 58.38 26.7225
 
 ## TTD savegame library for Go
 
-The subdirectory ttd/ contains a library for saving and loading TTD savegames in golang. It is independent of the converted and should be suitable for use in other projects. It is not finished yet, so the API will change.
+The subdirectory ttd/ contains a library for saving and loading TTD savegames in golang. It is independent of the converter and should be suitable for use in other projects. It is not finished yet, so the API will change.
 
 It mostly uses http://marcin.ttdpatch.net/sv1codec/TTD-locations.html and https://wiki.openttd.org/en/Manual/Interoperability as references.
 
