@@ -10,6 +10,8 @@ Download a osm.pbf file from https://download.geofabrik.de/ and run a command li
 go run osm2ttd.go [--size=SIZE_IN_DEGREES] INFILE OUTFILE LONGITUDE LATITUDE
 ```
 
+Example:
+
 ```
 go run osm2ttd.go --size=0.1 in.osm.pbf out.sv0 58.38 26.7225
 ```
