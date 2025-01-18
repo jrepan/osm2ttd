@@ -63,5 +63,3 @@ if err != nil {
 ```
 
 See `ttd/types.go` for the definitions of the fields.
-
-See `ttd_example.go` for a complete example on saving and `ttd_load.go` for an example on loading savegames.
